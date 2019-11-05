@@ -12,7 +12,7 @@ keepalived可以实现主备服务器故障切换转移、负载均衡。
 主节点配置:
 ```
 global_defs {
-   router_id node01 # 节点标识，局域网内唯一
+   router_id node01 # 节点标识，同一集群内唯一
 }
 
 vrrp_instance VI_1 {
