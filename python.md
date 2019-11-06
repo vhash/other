@@ -21,7 +21,7 @@ command=/home/test/.pyenv/versions/test/bin/gunicorn manage:app -c app.guni
 user=test
 ```
 
-##### supervisordctl常用命令
+##### supervisorctl常用命令
 help # 查看帮助  
 status # 查看程序状态  
 stop program_name # 关闭 指定的程序  
