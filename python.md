@@ -42,11 +42,13 @@ app = Flask(__name__)
 @app.route('/upload', methods=['POST'])
 def upload():
     files = request.files
+    """
     f = {}
     for item in files:
         _ = files.get(item)
         f[item] = (_.filename, _.read(), _.content_type)
-    
+    """
+    f = {k: (v.filename, v.read(), v.content_type) for k, v in files.items()}
     url = 'http://exampleurl:port/someroute'
     try:
         r = requests.post(url, files=f, timeout=8)
