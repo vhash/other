@@ -1,6 +1,8 @@
 RSA加密算法是一种非对称加密算法<https://blog.csdn.net/cynophile/article/details/79642498>   
 公钥持有者: A   
 私钥持有者: B
+
+pip install pycryptodome
 ##### 签名
 为了保证消息确实是B发出的，B需要用私钥对消息进行签名   
 B —— 明文 ——（计算hash值）—— hash值 ——（使用私钥加密）—— 签名   
