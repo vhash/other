@@ -29,3 +29,31 @@ start program_name # 启动 指定的程序
 restart program_name # 重启 指定的程序  
 tail -f program_name # 查看 该程序的日志  
 update # 重启配置文件修改过的程序（修改了配置，通过这个命令加载新的配置)  
+
+#### flask 文件接收并转发
+flask收到上传的文件之后，通过requests转发到另一个服务
+
+```
+from flask import Flask, request
+import requests
+
+app = Flask(__name__)
+
+@app.route('/upload', methods=['POST'])
+def upload():
+    files = request.files
+    f = {}
+    for item in files:
+        _ = files.get(item)
+        f[item] = (_.filename, _.read(), _.content_type)
+    
+    url = 'http://exampleurl:port/someroute'
+    try:
+        r = requests.post(url, files=f, timeout=8)
+    except Exception as e:
+        return 'false'
+    return 'true'
+
+if __name__ == '__main__':
+    app.run()
+```
