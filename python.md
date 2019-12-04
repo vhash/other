@@ -6,7 +6,7 @@ supervisor用来管理进程
 官方文档: <http://supervisord.org/configuration.html>  
 参考：<https://www.liaoxuefeng.com/article/895919885120064>
 
-##### CentOS7.5安装
+###### CentOS7.5安装
 `yum install supervisor`  
 
 在`/etc/supervisord.d/`中添加需要管理的进程配置文件：  
@@ -21,7 +21,7 @@ command=/home/test/.pyenv/versions/test/bin/gunicorn manage:app -c app.guni
 user=test
 ```
 
-##### supervisorctl常用命令
+###### supervisorctl常用命令
 help # 查看帮助  
 status # 查看程序状态  
 stop program_name # 关闭 指定的程序  
