@@ -1,5 +1,5 @@
 RSA加密算法是一种非对称加密算法<https://blog.csdn.net/cynophile/article/details/79642498>   
-公钥持有者: A   
+公钥持有者: A和C   
 私钥持有者: B
 
 pip install pycryptodome
@@ -44,6 +44,8 @@ def verify_sign(message, pub_key, sign):
 ```
 ##### 加解密
 A给B发消息，为了保证消息内容不泄露，A需要用B的公钥对消息进行加密   
+B给A发消息的话，不能用B的私钥加密，因为C手里的公钥能解密消息。所以B给A发消息必须用A的公钥   
+
 A —— 明文 ——（使用B的公钥加密）—— 密文   
 
 B —— 密文 ——（使用私钥解密）—— 明文   
