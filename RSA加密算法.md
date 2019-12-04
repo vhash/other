@@ -74,3 +74,6 @@ def decrypt(encrypt_text, pri_key):
     cipher = Cipher_PKCS1_v1_5.new(rsa_key)
     return cipher.decrypt(base64.b64decode(encrypt_text), Random.new().read(10)).decode()
 ```
+
+##### 注意
+> 如果我们把`message`字符串的长度增加到很长，例如1M，这时，执行RSA加密会得到一个类似这样的错误：`data too large for key size`，这是因为RSA加密的原始信息必须小于Key的长度。那如何用RSA加密一个很长的消息呢？实际上，RSA并不适合加密大数据，而是先生成一个随机的AES密码，用AES加密原始信息，然后用RSA加密AES口令，这样，实际使用RSA时，给对方传的密文分两部分，一部分是AES加密的密文，另一部分是RSA加密的AES口令。对方用RSA先解密出AES口令，再用AES解密密文，即可获得明文。
